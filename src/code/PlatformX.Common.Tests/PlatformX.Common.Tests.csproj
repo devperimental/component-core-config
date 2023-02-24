@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Useful.Implementation\Useful.Implementation.csproj" />
+    <ProjectReference Include="..\PlatformX.Common.Config\PlatformX.Common.Config.csproj" />
+    <ProjectReference Include="..\PlatformX.Common.Secrets\PlatformX.Common.Secrets.csproj" />
+    <ProjectReference Include="..\PlatformX.Common\PlatformX.Common.csproj" />
   </ItemGroup>
 
 </Project>
