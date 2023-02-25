@@ -12,9 +12,12 @@ namespace PlatformX.Http.Helper
 {
     public class HttpRequestHelper : IHttpRequestHelper
     {
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<HttpRequestHelper> _logger;
-        public HttpRequestHelper(ILogger<HttpRequestHelper> logger)
+
+        public HttpRequestHelper(IHttpClientFactory httpClientFactory, ILogger<HttpRequestHelper> logger)
         {
+            _httpClientFactory = httpClientFactory; 
             _logger = logger;
         }
 
@@ -39,40 +42,39 @@ namespace PlatformX.Http.Helper
             try
             {
                 T returnObject;
-                using (var client = new HttpClient())
-                using (var response = await client.SendAsync(request))
+                using var httpClient = _httpClientFactory.CreateClient();
+                using var response = await httpClient.SendAsync(request);
+                
+                if (response.IsSuccessStatusCode)
                 {
-                    if (response.IsSuccessStatusCode)
+                    content = await response.Content.ReadAsStringAsync();
+                    returnObject = JsonConvert.DeserializeObject<T>(content);
+                }
+                else
+                {
+                    if (response.StatusCode == HttpStatusCode.BadRequest)
                     {
                         content = await response.Content.ReadAsStringAsync();
-                        returnObject = JsonConvert.DeserializeObject<T>(content);
+                        if (!string.IsNullOrEmpty(content))
+                        {
+                            throw new ApplicationException(content);
+                        }
+                        throw new ApplicationException(response.ReasonPhrase);
+                    }
+                    else if (response.StatusCode == HttpStatusCode.BadGateway)
+                    {
+                        var message = "BadGateway Error: ";
+                        message += $" Status Code: {response.StatusCode}";
+                        message += $" Reason Phrase: {response.ReasonPhrase}";
+
+                        throw new ApplicationException(message);
                     }
                     else
                     {
-                        if (response.StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            content = await response.Content.ReadAsStringAsync();
-                            if (!string.IsNullOrEmpty(content))
-                            {
-                                throw new ApplicationException(content);
-                            }
-                            throw new ApplicationException(response.ReasonPhrase);
-                        }
-                        else if (response.StatusCode == HttpStatusCode.BadGateway)
-                        {
-                            var message = "BadGateway Error: ";
-                            message += $" Status Code: {response.StatusCode}";
-                            message += $" Reason Phrase: {response.ReasonPhrase}";
-
-                            throw new ApplicationException(message);
-                        }
-                        else
-                        {
-                            throw new ApplicationException(JsonConvert.SerializeObject(response));
-                        }
+                        throw new ApplicationException(JsonConvert.SerializeObject(response));
                     }
                 }
-
+                
                 return await Task.FromResult(returnObject);
             }
             catch (Exception ex)
