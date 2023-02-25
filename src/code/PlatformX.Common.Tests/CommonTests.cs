@@ -18,5 +18,12 @@ namespace Useful.Implementation.Tests
             var config = new BootstrapConfiguration();
             Assert.IsNotNull(config);            
         }
+
+        [Test]
+        public void TestRuntimeSettings()
+        {
+            var config = new RuntimeSettings();
+            Assert.IsNotNull(config);
+        }
     }
 }
