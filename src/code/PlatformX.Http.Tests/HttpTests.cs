@@ -23,6 +23,7 @@ namespace Useful.Implementation.Tests
             
             _mocker = new AutoMocker();
             _mocker.Use(CreateInMemoryLogger<HttpRequestHelper>());
+            
         }
 
         [Test]
