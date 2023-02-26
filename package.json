@@ -1,7 +1,7 @@
 {
-  "name": "nuget-package-template",
+  "name": "component-core-config",
   "version": "0.0.0-development",
-  "description": "Example nuget package repo using semantic release",
+  "description": "Component Core Confiuration Repository",
   "main": "index.js",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.2",
@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Architected/nuget-package-template.git"
+    "url": "git+https://github.com/Architected/component-core-config.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Architected/nuget-package-template/issues"
+    "url": "https://github.com/Architected/component-core-config/issues"
   },
-  "homepage": "https://github.com/Architected/nuget-package-template#readme"
+  "homepage": "https://github.com/Architected/component-core-config#readme"
 }
