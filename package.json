@@ -14,12 +14,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Architected/component-core-config.git"
+    "url": "git+https://github.com/devperimental/component-core-config.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Architected/component-core-config/issues"
+    "url": "https://github.com/devperimental/component-core-config/issues"
   },
-  "homepage": "https://github.com/Architected/component-core-config#readme"
+  "homepage": "https://github.com/devperimental/component-core-config#readme"
 }
