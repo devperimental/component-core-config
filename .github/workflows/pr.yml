@@ -5,7 +5,6 @@ on:
 env:
   nuget-username: chrisxpr
   src-dir: ./src/code
-  build-environment: dev
   coverage-threshold: 60
   repo-organisation: architected
   team-pat: ${{ secrets.NUGET_PAT}}
