@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/devperimental/component-core-config/compare/v1.0.1...v1.1.0) (2023-03-04)
+
+
+### Features
+
+* Add more fields to BootstrapConfiguration ([0d7aec8](https://github.com/devperimental/component-core-config/commit/0d7aec81706f221a86ea63276e0f146e6636a4b1))
+
 # [1.1.0-alpha-7.1](https://github.com/devperimental/component-core-config/compare/v1.0.1...v1.1.0-alpha-7.1) (2023-03-04)
 
 
