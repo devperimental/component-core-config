@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PlatformX.Common.Types.Constants
+namespace PlatformX.Common.Constants
 {
     public static class StackType
     {
