@@ -6,5 +6,8 @@ namespace PlatformX.Http.Behaviours
     {
         string DetermineIpAddress();
         string DetermineUserAgent();
+        string DetermineHost();
+        string GetHeaderKeyValue(string keyName);
+        string GetQuerystringKeyValue(string keyName);
     }
 }
