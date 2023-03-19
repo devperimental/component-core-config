@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/devperimental/component-core-config/compare/v1.1.0...v1.2.0) (2023-03-19)
+
+
+### Features
+
+* Implement refactors ([1116992](https://github.com/devperimental/component-core-config/commit/111699222a3b82e0d9792c508e930b9b669a5c3d))
+
 # [1.2.0-alpha-8.1](https://github.com/devperimental/component-core-config/compare/v1.1.0...v1.2.0-alpha-8.1) (2023-03-18)
 
 
