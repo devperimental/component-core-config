@@ -2,6 +2,7 @@
 using Microsoft.Net.Http.Headers;
 using PlatformX.Http.Behaviours;
 using System;
+using System.Linq;
 
 namespace PlatformX.Http.Helper
 {
@@ -12,6 +13,11 @@ namespace PlatformX.Http.Helper
         public HttpContextHelper(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+        }
+
+        public string DetermineHost()
+        {
+            return _httpContextAccessor.HttpContext.Request.Host.ToString();
         }
 
         public string DetermineIpAddress()
@@ -49,17 +55,30 @@ namespace PlatformX.Http.Helper
 
         public string DetermineUserAgent()
         {
-            var userAgent = string.Empty;
+            return GetHeaderKeyValue(HeaderNames.UserAgent);
+        }
+
+        public string GetHeaderKeyValue(string keyName)
+        {
+            var keyValue = string.Empty;
 
             if (_httpContextAccessor.HttpContext?.Request == null)
-                return userAgent;
-            
-            if (_httpContextAccessor.HttpContext.Request.Headers != null)
+                return keyValue;
+
+            if (_httpContextAccessor.HttpContext.Request.Headers != null &&
+                _httpContextAccessor.HttpContext.Request.Headers.Keys.Contains(keyName))
             {
-                userAgent = _httpContextAccessor.HttpContext.Request.Headers[HeaderNames.UserAgent];
+                keyValue = _httpContextAccessor.HttpContext.Request.Headers[keyName];
             }
 
-            return userAgent;
+            return keyValue;
+        }
+
+        public string GetQuerystringKeyValue(string keyName)
+        {
+            _httpContextAccessor.HttpContext.Request.Query.TryGetValue("dz-app-key", out var appKeyValue);
+
+            return !string.IsNullOrEmpty(appKeyValue) ? appKeyValue.FirstOrDefault() : string.Empty;
         }
     }
 }

@@ -25,31 +25,12 @@ namespace Useful.Implementation.Tests
                 AzureTenantId = "ABC",
                 PortalName = "ABC",
                 Layer  = "ABC",
-                LogMessages  = true,
-                LogWarnings  = true,
-                LogErrors  = true,
-                DBName  = "ABC",
-                PlatformServiceMetaData  = "ABC",
                 ServiceKeys  = "ABC",
                 RuntimeConfiguration  = "ABC",
-                ServiceSymmetricKeyName  = "ABC",
-                ServerName  = "ABC",
-                BuildNumber  = "ABC",
-                ContainerType  = "ABC"
+                ServiceSymmetricKeyName  = "ABC"
             };
 
             Assert.IsNotNull(config);            
-        }
-
-        [Test]
-        public void TestRuntimeSettings()
-        {
-            var config = new RuntimeSettings()
-            {
-                Settings = new Dictionary<string, string> { { "ABC", "DEF"} }
-            };
-
-            Assert.IsNotNull(config);
         }
     }
 }

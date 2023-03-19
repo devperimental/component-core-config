@@ -2,9 +2,9 @@
 {
     public static class EnvironmentName
     {
-        public const string Local = "local";
-        public const string Development = "dev";
-        public const string Test = "test";
-        public const string Production = "prod";
+        public const string Local = nameof(Local);
+        public const string Development = nameof(Development);
+        public const string Test = nameof(Test);
+        public const string Production = nameof(Production);
     }
 }
